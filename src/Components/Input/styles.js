@@ -22,9 +22,7 @@ export const Input = styled.input`
       border-color:${props=>
     {return props.validation===false?'red':'#789D55'}};
       
-    }   
-    
-    
+    }    
 `
 export const InputPassword = styled.input`
     width: 420px;
@@ -61,4 +59,43 @@ export const VisibilityButton = styled.img`
     position: relative;
     right: 45px;
     top: 8px;
+`
+
+export const InputReverse = styled.input`
+    width: 420px;
+    margin-bottom: 15px;
+    height: 55px;
+    border: 2px solid;
+    border-radius: 60px;
+    background-color:#282828;
+    color:white;
+    padding-left: 20px;
+    font-size: 16px;
+    border-color:${props=>
+    {return props.validation===false?'red':'none'}};
+    background-color:${props=>
+    {return props.validation===false?'#fbdada':'none'}};
+    &&:focus{
+      border-color:${props=>
+    {return props.validation===false?'red':'#789D55'}};
+      
+    }
+    &&::placeholder{
+      color:white;
+    }    
+`
+
+export const InputDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5px;
+  
+`
+
+export const InputTitle=styled.p`
+  font-size: 20px;
+ // font-weight: bold;
+  padding-left: 20px;
+  
+
 `

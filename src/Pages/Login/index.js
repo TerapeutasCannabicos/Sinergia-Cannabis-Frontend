@@ -24,10 +24,10 @@ const emailReducer = (state,action) => {
 
 const passwordReducer = (state,action) => {
   if(action.type ==='USER_INPUT'){
-    return {value:action.val, isValid:action.val.trim().length > 6}
+    return {value:action.val, isValid:action.val.trim().length > 5}
   }
   if(action.type ==='INPUT_BLUR'){
-    return {value:state.value, isValid:state.value.trim().length > 6}
+    return {value:state.value, isValid:state.value.trim().length > 5}
   }
   return {value:'', isValid:false};
 }
@@ -132,7 +132,7 @@ export default function Login(){
   const window1 = () => {
     return (
 
-        <Modal  onClose={() => setForgotWindow(false)}>
+        <Modal onClose={() => setForgotWindow(false)}>
             <LoginContainer>
                 <ModalDiv>
                   <WindowTitle>Esqueci a Senha</WindowTitle>
@@ -162,13 +162,9 @@ const window2 = () => {
   
 }
 
-const test =() =>{
-  if(emailState.value === '@' && passwordState.value==='12345678'){
-    return true
-  }
-}
+
   async function handleSign() {
-    // email, password (formulário omitido)
+   
     const response = await SignIn();
     console.log(response);
   }

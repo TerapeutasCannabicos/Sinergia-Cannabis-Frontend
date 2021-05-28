@@ -18,7 +18,7 @@ export default function Register(){
         <ArrowDiv>
           <Link to='/login' style={{ textDecoration: 'none'}}><Return src={Arrow}/></Link>
         </ArrowDiv>
-        <Title>CADASTRO</Title>
+        <Title style={{'margin-top':'0px'}}>CADASTRO</Title>
       </TitleContainer>
       <UserType/>
     </RegisterBg>

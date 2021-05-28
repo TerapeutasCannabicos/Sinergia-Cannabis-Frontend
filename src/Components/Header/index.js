@@ -6,6 +6,7 @@ import {Title} from '../../Utils/styles';
 import LogoCannabis from '../../Assets/logo.svg';
 import Enter from '../../Assets/enter.svg';
 import Exit from '../../Assets/exit.svg'
+import { NavLink } from 'react-router-dom';
 
 
 export default function Header(){
@@ -16,7 +17,10 @@ export default function Header(){
   const res=true
   //passar por context a info de qual tipo de user é
 
-  
+  const activeStyle={
+    textDecoration:'underline',
+    textDecorationColor:'#789D55'
+  }
 
 
   const UserCheck = () =>{
@@ -119,7 +123,7 @@ export default function Header(){
         <NavList>
           <NavOption>PRODUTOS</NavOption>
           <NavOption>CONSULTAS</NavOption>
-          <NavOption>PERFIL</NavOption>
+          <NavLink to='/perfil' activeStyle={activeStyle}><NavOption>PERFIL</NavOption></NavLink>
           <LogoutContainer onClick={authCtx.onLogout}>
             <NavOption>SAIR</NavOption>
             <LogoutIcon src={Exit} alt="Logout" />
@@ -146,10 +150,10 @@ export default function Header(){
       <HeaderContainer>
         <Logo src={LogoCannabis}/>
         {!authCtx.isLoggedIn && (<Logged/>)}
-        {authCtx.isLoggedIn && med && (<Medic/>)}
-        {authCtx.isLoggedIn && res && (<Res/>)}
-        {authCtx.isLoggedIn && adm && (<Adm/>)}
-        {authCtx.isLoggedIn && gest && (<Gest/>)}
+        {authCtx.isLoggedIn && authCtx.user==='medico' && (<Medic/>)}
+        {authCtx.isLoggedIn && authCtx.user==='responsavel' && (<Res/>)}
+        {authCtx.isLoggedIn && authCtx.user==='adm' && (<Adm/>)}
+        {authCtx.isLoggedIn && authCtx.user==='gestor' && (<Gest/>)}
       </HeaderContainer>
     </HeaderBg>
   )

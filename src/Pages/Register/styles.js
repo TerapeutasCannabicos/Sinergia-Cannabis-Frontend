@@ -17,29 +17,24 @@ export const RegisterBg = styled.div`
 `
 export const TitleContainer = styled.div`
   margin-top: 20px;
+  width: 80%;
+  
   display: flex;
   align-items: center;
   flex-direction: column;
   
 `
 export const ArrowDiv = styled.div`
-  justify-self: self-start;
-  width: 1200px;
-  height: 10px;
-  @media(max-width:1400px){
-    width:950px;
-  }
-  @media(max-width:1100px) {
-    width:750px;
-  }
-  @media(max-width:900px) {
-    width:550px;
-  }
+  width: 100%;
+
+  display:flex;
+  align-items:flex-start;
+  
 
 `
 export const Return = styled.img`
    
-    width: 80px;
+    width: 90%;
     cursor:pointer;
    
     
