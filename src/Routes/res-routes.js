@@ -8,6 +8,9 @@ import Profile from '../Pages/Responsavel/Profile';
 import Pacients from '../Pages/Responsavel/Pacients';
 import Register from '../Pages/Responsavel/Register';
 import MenuPacient from '../Pages/Responsavel/MenuPacient';
+import Consultas from '../Pages/Responsavel/Consultas';
+import Agendamento from '../Pages/Responsavel/Agendamento';
+import ProChoice from '../Pages/Responsavel/ProChoiceAgendamento';
 
 
 export default function ResRoutes(){
@@ -21,8 +24,10 @@ export default function ResRoutes(){
       <Route exact path='/perfil/dados' component={Dados}/>
       <Route exact path='/perfil/pacientes' component={Pacients}/>
       <Route exact path='/perfil/pacientes/registro' component={Register}/>
-      <Route exact path='/perfil/pacientes/menu' component={MenuPacient}/>
-      
+      <Route path='/perfil/pacientes/menu' component={MenuPacient}/>
+      <Route exact path='/consultas' component={Consultas}/>
+      <Route exact path='/consultas/paciente' component={Agendamento}/>
+      <Route exact path='/consultas/paciente/agendamento' component={ProChoice}/>
       
       </Switch>
     </BrowserRouter>

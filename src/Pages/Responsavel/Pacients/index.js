@@ -1,37 +1,79 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import Head from '../../../Components/Head';
 import Header from '../../../Components/Header';
+import Return from '../../../Components/Return';
+import AuthContext from '../../../Storage/auth-context';
 import {Link} from 'react-router-dom';
-import { ArrowDiv, Card, CardContainer, CardName, InnerContainerBg, ProfileBg,Return,Title, TitleContainer } from './styles';
-import Arrow from '../../../Assets/arrow.svg';
+import {Card, CardContainer, CardName, InnerContainerBg, ProfileBg,Title, TitleContainer } from './styles';
+import api from '../../../Services/api';
+
 import Plus from '../../../Assets/plus.svg';
 import Avatar from '../../../Assets/avatar.svg';
 
 export default function Pacients(){
-  const pacientes = [
-    {name:'Igor Godinho'},
-    {name:'Camila Maia'},
-    {name:'Paulo Melo'}
-  ]
+  
+  
+ 
+  const {userInfo,onDataChange,pacients} = useContext(AuthContext) 
+  console.log(Object.values(pacients))
+  //const pacientList=userInfo.paciente
+  
+  const listagemPacientes=JSON.parse(localStorage.getItem('Pacientes'));
+  console.log(listagemPacientes)
+  //console.log(window.localStorage.getItem('Pacientes'))
 
-  const first=false
-  const renderCard = pacientes.map((item,index)=>{
-    return(
-      <>
-        
-        <Link to='/perfil/pacientes/menu'><Card key={index}>
-          <CardName><img src={Avatar}/><br/>
-          {item.name}</CardName>
-        </Card></Link>
-      
-      </>
-    )
-  })
+  if(pacients.lenght===0){
+    var first=true
+  }
+  if (!first){
+    var renderCards=''
+  }else{
+     
+     renderCards = listagemPacientes.map((item)=>{
+        console.log(item)
+        const adress='/perfil/pacientes/menu/'+item.id
+        return(
+          <>
+            
+            <Link to={adress}><Card key={item.id}>
+              <CardName><img src={Avatar}/><br/>
+              {item.nome}</CardName>
+            </Card></Link>
+          
+          </>
+        )
+      })
+  }
+
+  if(window.localStorage.getItem('Pacientes')===null || window.localStorage.getItem('Pacientes')==='[]'){
+    var first=true
+  }
+  if (first){
+    var renderCard=''
+  }else{
+    
+     renderCard = listagemPacientes.map((item,index)=>{
+        //var cpf=item.cpf
+        const adress='/perfil/pacientes/menu/'+item.cpf
+        return(
+          <>
+            
+            <Link to={adress}><Card key={index}>
+              <CardName><img src={Avatar}/><br/>
+              {item.nome}</CardName>
+            </Card></Link>
+          
+          </>
+        )
+      })
+  }
+  
 
   const DisplayCards=()=>{
     return(
       <CardContainer>
         {renderCard}
+        {renderCards}
         <Link to='/perfil/pacientes/registro'><Card><img src={Plus} alt='Registrar paciente'/></Card></Link>
       </CardContainer>
     )
@@ -58,7 +100,7 @@ export default function Pacients(){
         <Title active={true}>PACIENTES</Title>
       </TitleContainer>
       <InnerContainerBg>
-        <ArrowDiv><Link to='/perfil'><Return src={Arrow}/></Link></ArrowDiv>
+        <Return destiny='/perfil'/>
         {first?<FirstTime/>:<DisplayCards/>}
       </InnerContainerBg>  
       

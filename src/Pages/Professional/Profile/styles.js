@@ -9,7 +9,7 @@ export const ProfileBg = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+  //margin-bottom: 120px;
   @media(max-width:1400px) {
     width:90%;
   }
@@ -29,10 +29,6 @@ export const Title = styled.p`
   color:white;
   margin-top:5%;
   cursor: pointer;
-  
-  text-decoration: ${props=>
-  {return props.active===true?'underline':'none'}};
-  text-decoration-color:#789D55;
   @media(max-width:800px){
     font-size: 24px;
     
@@ -44,25 +40,17 @@ export const Title = styled.p`
     text-decoration:underline;
     text-decoration-color:#789D55;
   }
+  text-decoration: ${props=>
+  {return props.active===true?'underline':'none'}};
+  text-decoration-color:#789D55;
 `
 
 export const InnerContainerBg = styled.div`
   width: 80%;
-  
+  height: 800px;
   border-radius: 40px;
   margin-top: 20px;
   margin-bottom: 60px;
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items:center;
-  padding-top: 10px;
-  padding-bottom: 40px;
-`
-
-
-export const InputContainer=styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 420px;
+  
 `

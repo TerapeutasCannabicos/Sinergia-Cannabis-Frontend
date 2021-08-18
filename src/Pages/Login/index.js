@@ -1,6 +1,5 @@
 import React,{useState, useEffect,useReducer,useContext} from 'react';
 import AuthContext from '../../Storage/auth-context';
-import SignIn from '../../Services/auth';
 import Header from '../../Components/Header';
 import { Input, InputPassword ,VisibilityButton} from '../../Components/Input/styles';
 import { Button, Title } from '../../Utils/styles';
@@ -10,7 +9,7 @@ import Lock from '../../Assets/lock.svg';
 import NotVisible from '../../Assets/notvisible.svg';
 import Visible from '../../Assets/visible.svg';
 import Modal from '../../Components/Modal';
-import { Link } from 'react-router-dom';
+
 
 const emailReducer = (state,action) => {
   if(action.type ==='USER_INPUT'){
@@ -154,8 +153,7 @@ const window2 = () => {
               <WindowTitle>Esqueci a Senha</WindowTitle>
           <WindowText>Um email contendo o link para troca de senha foi enviado para {forgotEmailState.value}. Verifique sua caixa de spam. Caso não chegue em alguns minutos, faça o processo novamente.</WindowText>
           </ModalDiv>
-          </LoginContainer>
-                      
+          </LoginContainer>          
       </Modal>
       
   )
@@ -163,11 +161,7 @@ const window2 = () => {
 }
 
 
-  async function handleSign() {
-   
-    const response = await SignIn();
-    console.log(response);
-  }
+  
   return(
     <>
     <Header/>

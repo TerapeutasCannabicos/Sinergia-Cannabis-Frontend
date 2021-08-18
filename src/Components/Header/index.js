@@ -93,8 +93,8 @@ export default function Header(){
     return(
         <NavList>
           <NavOption>PACIENTES</NavOption>
-          <NavOption>CONSULTAS</NavOption>
-          <NavOption>PERFIL</NavOption>
+          <NavLink to='/consultas' activeStyle={activeStyle}><NavOption>CONSULTAS</NavOption></NavLink>
+          <NavLink to='/perfil' activeStyle={activeStyle}><NavOption>PERFIL</NavOption></NavLink>
           <LogoutContainer onClick={authCtx.onLogout}>
             <NavOption>SAIR</NavOption>
             <LogoutIcon src={Exit} alt="Logout" />
@@ -106,13 +106,13 @@ export default function Header(){
   const Adm = () => {
     return(
         <NavList>
-          <NavOption>CADASTRO</NavOption>
+          <NavLink to='/cadastros' activeStyle={activeStyle}><NavOption>CADASTRO</NavOption></NavLink>
           <NavOption>CONSULTAS</NavOption>
           <NavOption>PROFISSIONAIS</NavOption>
           <NavOption>PAGAMENTOS</NavOption>
           <LogoutContainer onClick={authCtx.onLogout}>
             <NavOption>SAIR</NavOption>
-            <LogoutIcon src={Exit} alt="Logout" />
+            <Link to='/'><LogoutIcon src={Exit} alt="Logout" /></Link>
           </LogoutContainer>
         </NavList>
     )
@@ -122,11 +122,12 @@ export default function Header(){
     return(
         <NavList>
           <NavOption>PRODUTOS</NavOption>
-          <NavOption>CONSULTAS</NavOption>
+         
+          <NavLink to='/consultas' activeStyle={activeStyle}><NavOption>CONSULTAS</NavOption></NavLink>
           <NavLink to='/perfil' activeStyle={activeStyle}><NavOption>PERFIL</NavOption></NavLink>
           <LogoutContainer onClick={authCtx.onLogout}>
             <NavOption>SAIR</NavOption>
-            <LogoutIcon src={Exit} alt="Logout" />
+            <Link to='/'><LogoutIcon src={Exit} alt="Logout" /></Link>
           </LogoutContainer>
         </NavList>
     )
@@ -152,7 +153,7 @@ export default function Header(){
         {!authCtx.isLoggedIn && (<Logged/>)}
         {authCtx.isLoggedIn && authCtx.user==='medico' && (<Medic/>)}
         {authCtx.isLoggedIn && authCtx.user==='responsavel' && (<Res/>)}
-        {authCtx.isLoggedIn && authCtx.user==='adm' && (<Adm/>)}
+        {authCtx.isLoggedIn && authCtx.user==='administrador' && (<Adm/>)}
         {authCtx.isLoggedIn && authCtx.user==='gestor' && (<Gest/>)}
       </HeaderContainer>
     </HeaderBg>
